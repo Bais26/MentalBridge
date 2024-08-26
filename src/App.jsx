@@ -1,14 +1,18 @@
-import { useState } from 'react'
-import './index.css'
-
-function App() {
-  const [count, setCount] = useState(0)
-
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Index from './router/Route';
+import Home from './page/Home';
+import ErrorPage from './page/ErrorPage';
+const App = () => {
   return (
-    <h1 className="text-3xl font-bold underline">
-    Hello world!
-  </h1>
-  )
-}
+    <Router>
+      <Routes>
+        <Route path="/" element={<Index />}>
+          <Route index element={<Home />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Route>
+      </Routes>
+    </Router>
+  );
+};
 
-export default App
+export default App;
